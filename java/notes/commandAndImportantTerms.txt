@@ -1,0 +1,14 @@
+java -version | java --version => to know current version of java in your computer/device
+
+javac -version | javac --version => to know current version of java compiler in your computer/device
+
+java is a case sencetive lanuage hence we need to type carefully 
+
+we should name our class name first letter capital and for constants we should keep the whole name capital these are not rule but standards
+
+name of file should be same name of class or it will give error
+
+to compiler a java file we need to write javac fileName.java this will create a .class file which is binary form of the .java file 
+
+to run file we first need to compile using above step and the java classFileName to run and output will be on the screen(terminal)
+

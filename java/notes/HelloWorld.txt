@@ -1,0 +1,23 @@
+public class HelloWorld{
+    public static void main(String[] args){
+        System.out.print("Hello World");
+    }
+} 
+here the public is a keyword which is used to 
+
+public before class mean that ,that class is a public class which result in 
+
+public before function mean function is public that mean 
+
+static keyword mean that this function can be called by 
+
+void is the return type ,mean this function doesnot return anything
+
+String [] args is a array of string which contain all the argument we provide while running the file other syntax can be String args[] and there can be anything at place of args hence String [] name is valid
+
+System is a class which contain
+
+out is a object of System class 
+
+print if a function that print the content on screen we can also use println which print on new line
+

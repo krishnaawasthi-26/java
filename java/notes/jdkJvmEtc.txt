@@ -1,0 +1,10 @@
+we human write java code but jvm(java virtual machine) which is responsible for runing the java code doesnot understand the java code it only understand the byte code(.class) so to convert the java to byte code we use a compiler (using javac fileName) and then we run that byte code in jvm (using java filename of .class extension) 
+
+note we can have multiple file and out of all the file execution of file start from a function name main so ever project or file should have a function name main 
+
+and jvm is inside jre(java runtime envirement) insize jre we have jvm and libery 
+
+and jre is inside jdk(java development kit) which have 
+
+note we only need jre to run jdk is for development hence we just need jre in the device we want to run the code ,and hence it is called write once run anywhere
+
