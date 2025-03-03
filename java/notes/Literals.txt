@@ -1,0 +1,45 @@
+a literal is a fixed value that is directly written into the code. These values represent constant data of a specific type, such as numbers, characters, or boolean values. Literals are used to assign values to variables, pass data to functions, or directly appear in expressions.
+
+1. Integer Literals
+Base: Integer literals can be in decimal, hexadecimal, octal, or binary format.
+Suffix:
+L or l: Used for long literals (e.g., 123L).
+Integer literals without any suffix are treated as int by default.
+Rules:
+Decimal Integer: Just write the number without any prefix (e.g., 123, -456).
+Hexadecimal Integer: Prefix the number with 0x or 0X (e.g., 0xA1, 0XFF).
+Octal Integer: Prefix the number with 0 (e.g., 075).
+Binary Integer: Prefix the number with 0b or 0B (e.g., 0b1010, 0B1100).
+
+2. Floating-Point Literals
+Default: Floating-point literals are considered double by default.
+Suffix:
+f or F: Used to specify a float literal.
+Rules:
+Floating-point (double): Decimal numbers without a suffix (e.g., 3.14, -5.6).
+Floating-point (float): Add f or F to indicate a float (e.g., 3.14f, -5.6f).
+Scientific Notation: Use e or E to represent numbers in scientific notation (e.g., 1.23e3, 3.14E-2).
+
+3. Character Literals
+Enclosed in single quotes: A character literal must be a single character enclosed in single quotes (e.g., 'A', '1', '%').
+Escape Sequences: Special characters like newline (\n), tab (\t), backslash (\\), etc., can be represented using escape sequences.
+Rules:
+Single character: Write any character inside single quotes (e.g., 'A', 'Z').
+Escape sequences: Use backslash (\) followed by a character for special characters (e.g., '\n', '\t', '\\').
+
+4. String Literals
+Enclosed in double quotes: A string literal must be a sequence of characters enclosed in double quotes (e.g., "Hello", "123", "Java").
+Escape Sequences: Special characters like newline, tab, quotes, and backslashes inside strings can be represented using escape sequences (e.g., "\n", "\"").
+Rules:
+String: Write the sequence of characters inside double quotes (e.g., "Hello World", "123").
+Escape sequences: Use backslash (\) followed by a special character (e.g., "Hello\nWorld", "\"Quotes\"").
+
+5. Boolean Literals
+Values: Boolean literals can only be true or false.
+Rules:
+Boolean literals: Directly use true or false
+
+6. Null Literal
+Value: The null literal represents the absence of an object reference.
+Rules:
+null: It is written as null (all lowercase).
