@@ -1,0 +1,15 @@
+class-
+
+object-
+
+here calculator is a class and obj is a object of that class to acess any function or variable of that object we need to use 
+objectName.function/variable name.
+
+inside class we can alse define variables which are a and b in our case and they can be used like objectName.variableName
+
+inside class calculator we have a function name sum int is its return type , it can also be anyother data type 
+and if a function not return anything its return type would be void 
+
+to make a object we cant use syntax like we do with primitive data types like int tec ,that means we cant write className object; 
+this is static memory allocation hence memory is allocated in stack ,
+to make a object the syntax will be className obj=new className ; this is dynamic memory allocation hence memery will be allocateg in heap.
