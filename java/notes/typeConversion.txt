@@ -1,1 +1,33 @@
-write about in type conversion in java lab
+type conversion - the process ofconverting datatype of a variable into another type 
+Implicit Type Conversion (Widening): Automatically done by the compiler.
+Explicit Type Conversion (Narrowing): Requires the use of a cast operator.
+1. Implicit Type Conversion (Widening)
+In implicit type conversion (also called widening), Java automatically converts a smaller data type into a larger data type. This occurs when there is no risk of losing data, and the conversion happens automatically without the need for a cast.
+2. Explicit Type Conversion (Narrowing)
+In explicit type conversion (also called narrowing), a larger data type is converted into a smaller data type. This requires the use of a cast operator because there is a possibility of losing data when converting to a smaller type. The syntax is as follows:
+
+Rules for Type Conversion in Java
+Widening (Implicit):
+
+It occurs when a value is automatically converted to a larger type, such as:
+byte to short, int, long, float, double
+short to int, long, float, double
+char to int, long, float, double
+int to long, float, double
+float to double
+Narrowing (Explicit):
+
+It occurs when a value is manually converted to a smaller type. For example:
+double to float, long, int, short, byte
+float to int, short, byte
+long to int, short, byte
+int to short, byte
+char to byte, short, int
+
+ double anotherDoubleValue = 9.75;
+        int anotherIntValue = (int) anotherDoubleValue;
+
+
+
+
+Note if we try to convert a large data type into smaller so the data that will be stroed will me mod of big data by the data limit of smaller data type
