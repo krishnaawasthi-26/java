@@ -1,2 +1,65 @@
-name size of different type of variable their size and how to explicitely mention to make some variable like for float its f and their ranges
-  
+name size of different type of variable their size and 
+how to explicitely mention to make some variable like for float its f and their ranges
+  type of data type 
+data type is a type of stroage which can we use to store different type of data like name age etc
+
+Primitive Data Types - data type which are already already 
+byte
+Size: 1 byte
+Range: -128 to 127
+Example: byte a = 100;
+
+short
+Size: 2 bytes
+Range: -32,768 to 32,767
+Example: short b = 32000'
+
+int
+Size: 4 bytes
+Range: -2^31 to 2^31-1
+Example: int c = 100000;
+
+long
+Size: 8 bytes
+Range: -2^63 to 2^63-1
+Example: long d = 100000L;
+
+float
+Size: 4 bytes
+Range: 1.4E-45 to 3.4E+38
+Example: float e = 3.14f;
+
+double
+Size: 8 bytes
+Range: 4.9E-324 to 1.8E+308
+Example: double f = 3.14159265359;
+
+char
+Size: 2 bytes
+Range: 0 to 65,535 (representing Unicode characters)
+Example: char g = 'A';
+
+boolean
+Size: 1 bit (but JVM implementation may vary)
+Values: true or false
+Example: boolean h = true;
+
+2. Reference (Non-Primitive) Data Types
+These data types are more complex and refer to objects. Reference data types can store references (or addresses) to objects in memory.
+
+String: A sequence of characters (objects in Java, but behaves like a primitive in many ways).
+Example: String name = "Java";
+
+Arrays: An array is a collection of elements of the same type, stored in contiguous memory locations.
+Example: int[] numbers = {1, 2, 3, 4};
+
+Class: A user-defined type that is used to create objects.
+Example: class Car { String model; int year; }
+
+Interface: A reference type, similar to a class, that can contain only constants, method signatures, default methods, static methods, and nested types.
+Example: interface Shape { void draw(); }
+
+Enum: A special Java type used to define collections of constants.
+
+Example: enum Day { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY }
+
