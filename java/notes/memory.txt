@@ -1,0 +1,10 @@
+in memory the data can be stored in 2 type
+
+1 in stack where there is 2 coloumn first if name and second is value of that variable
+
+2 in heap which is expandable memory is allocated using new operator
+
+note - variable which are inside a class are allocated in heap(dynamiclly)
+
+
+when we create a object a space in stack is allocated to that oject on one side there is name of object and on other side there is a address which point to a memory block in heap which contain all the variable of that obejct including the function defination but if the function is called its storage is stored stack 
