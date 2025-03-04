@@ -1,1 +1,2 @@
 write about array and for each loop and other important stuff
+also about arr.length()
