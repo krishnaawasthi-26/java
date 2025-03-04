@@ -1,1 +1,2 @@
 write about the syntax and explain with a example
+also about the jacked array and the arr.length
