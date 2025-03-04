@@ -1,0 +1,14 @@
+static keyword can be used in following ways 
+1 static variable - these type of variable will be same object of a class hence they are decleared only once hence it take only memory of
+one variable. and can be accessed with class name and calling them using object should be avoided.
+syntax- static dataType nameOfvariable;
+to access- className.variableName.
+
+2 static function - this type of function can only access the static variable 
+but can we use variable decleared inside the static function because if we use regular variable then how compiler will know to which object does the regular variable belong to. but if you still want to use variable of any object we can take the bject as parameter and then use variable
+static function can be also accessed using the class name and object name but using class name is prefered 
+
+3 static block - in this block we can give value to all the static variable and this block only execute once when first object of a class is created 
+note- first the static block is executed then the constructor is executed
+
+why main is a static variable because if it was not first we needed to create a object of the class but how can we create object when execution start from main hence it should be static so that we can directlly call the main function using class name
