@@ -1,2 +1,4 @@
 write about array and for each loop and other important stuff
 also about arr.length()
+
+drawback of array and also the array of object
