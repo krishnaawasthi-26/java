@@ -1,0 +1,50 @@
+string can store n number of character like a line or a sentence etc
+in java string is a non primitive data type,hence we have a class name String in our java file 
+
+we can use string like normal like we do with the int and other primitive data type
+String s="hello"; this is same as 2 one can use anyone but if you use this compiler will make it 2 at the end
+this work but this is not the correct way to declear a string to declear a string properly we need to declear 
+it like we declear a object of any class (className objectName =new className();)
+String s=new String(); to store data we can 2 things 
+1 declear in one line and then iniciate in next line
+2 give the value of the string in the () after className example String s=new String("hello");
+
+to get hashCode of a string we can just do stringName.hashCode(); and we can put it in a variable or print it
+
+inside class String we have many methods which we can use to do some operation the string like:
+
+------------------------------------------------------------state some improtant string method----------------------
+
+every string in java is a constant that means that it is inmutable thta means we cant change the value of string 
+
+but is you try to change the value of any string it will change without any error but then how its inmutable 
+
+in heap (where all dynamic allocate memory is like string) there is a part called string constant pool here all the strings are stored 
+but note is 2 string have same value then the references will have same address heance if we create 2 string with same content 
+the address where value is stored will be same
+
+hence if we change content of any string then the address will also change
+
+but what if we want muttable string java have another 2 class for mutable string 
+
+1 string buffer-
+
+2 string builder-
+
+string buffer have a capacity which canbe seen by doing s.capacity(); s is name of string
+and this will be 16 + length of the string(but what if we decrease character afterwarts)
+
+we have many methods like 
+_____________________________________give some methods------------------------------------
+
+
+
+
+
+difference is one is thread safe and another is not
+
+
+
+
+
+
