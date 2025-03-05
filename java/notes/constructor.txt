@@ -1,0 +1,10 @@
+write what is constructor and what it is used for also write why we need constructor what is its need and what will happen if it doesnt exist 
+also about paramirtized one and constructor overloading 
+
+also about super that when we use inheritance and we make a object of child class it will call the constructor of both parent and child class
+respectively 
+
+note every class in java extend the Object class hence parent class also have super but if that class make a child class it will only extend 
+the parent class and it extend object class hence its a multilevel inheritance.
+
+this() - class the default constructor of a class
