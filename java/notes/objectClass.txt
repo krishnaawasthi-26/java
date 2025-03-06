@@ -1,0 +1,6 @@
+in java every class inherit the object class and in object class we have some default functions like toString and so on 
+
+if we try to print the object we will the output as objectName.toString() which will give us className@andSomeHexadecimalValues
+the hexadecimal number is actuall the hashCode in hexdecimal format
+
+but if we implement toString method which return some string when we try to print it we return what our toString function
