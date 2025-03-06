@@ -1,0 +1,10 @@
+final variable can be used to do a number of different task like
+
+1 final variable - these type of variable are constant hence there value if fixed and if we try to change it will give an error
+final dataType variableName=value;
+
+2 final class -  this type of class can be inherited by another class hence its the last class in the inheritance
+final class className{....}
+
+3 final method - this type of function cant be overidden in the child class 
+accessSpecifer final returnType nameOfFunction(parameters){....}
