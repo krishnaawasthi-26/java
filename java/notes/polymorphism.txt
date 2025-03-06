@@ -1,0 +1,19 @@
+polymorphism is the property of one thing(mostly function) to behave differently on input (same thing different reaction)
+
+polymorphism can be of 2 type
+1 compile time- which fuction will be executed is decided on the compile time 
+example - function overloading
+2 runtime - which function will be ezecuted is decided on the runtime
+exmple- function overriding 
+
+we can create a refrence of parent class which can be used to store any of its child class object 
+in given example show method print the name of class
+A obj=new A(); // now the obj is pointing to a object of A and it will print A (sow method of class A)
+obj.show();
+obj=new B();// now the obj is pointing to a object of B and it will print B (sow method of class B)
+obj.show();
+obj=new C();// now the obj is pointing to a object of C and it will print C (sow method of class C)
+obj.show();
+
+here in same object is used to call the same method which do different function hence its polymorphism and which function 
+will be executed is decided on runtime hence runtime polymorphism 
