@@ -1,4 +1,108 @@
-there is some thing which we can share and some data are which we cant share 
-diff type like private
+there is some thing which we can share like myName etc and some things are which we cant share like password etc
 
-geter and seter function
+It is a concept that bundles (or "capsulates") data and the methods that operate on that data into a single unit known as a class
+
+access modifiers in java : **`protected`** and **default (package-private)**. These access modifiers control the visibility and accessibility of class members (fields, methods, and constructors) from other classes. Here's an overview of all four access modifiers in Java:
+
+1. **Private (`private`)**:
+   - **Visibility**: The member is only accessible within the same class.
+   - **Use Case**: It's used when you want to restrict access to a class's internal data and behavior completely from the outside world.
+   - **Example**:
+     ```java
+     class MyClass {
+         private int number; // Only accessible within MyClass
+     }
+     ```
+
+### 2. **Public (`public`)**:
+   - **Visibility**: The member is accessible from any other class, in any package.
+   - **Use Case**: It's used when you want a class, field, or method to be universally accessible.
+   - **Example**:
+     ```java
+     class MyClass {
+         public int number; // Accessible from any other class
+     }
+     ```
+
+### 3. **Protected (`protected`)**:
+   - **Visibility**: The member is accessible within its own package and by subclasses (even if the subclass is in a different package).
+   - **Use Case**: It's often used when you want to allow access to certain members from subclasses but not from other unrelated classes.
+   - **Example**:
+     ```java
+     class MyClass {
+         protected int number; // Accessible within same package and by subclasses
+     }
+     ```
+
+### 4. **Default (Package-Private)**:
+   - **Visibility**: If no access modifier is specified, the member is accessible only within its own package. This is known as **package-private**.
+   - **Use Case**: It's used when you want to limit access to members within the same package, but not expose them to the outside world or subclasses.
+   - **Example**:
+     ```java
+     class MyClass {
+         int number; // Accessible only within the same package (default)
+     }
+     ```
+
+### Summary of Access Modifiers:
+| Access Modifier | Same Class | Same Package | Subclass (Different Package) | Other Package |
+|-----------------|------------|--------------|------------------------------|---------------|
+| `private`       | Yes        | No           | No                           | No            |
+| `default`       | Yes        | Yes          | No                           | No            |
+| `protected`     | Yes        | Yes          | Yes                          | No            |
+| `public`        | Yes        | Yes          | Yes                          | Yes           |
+
+### Example Code:
+
+```java
+class Animal {
+    private String name;      // Accessible only within the Animal class
+    public int age;           // Accessible from anywhere
+    protected String species; // Accessible within the package and by subclasses
+    String habitat;           // Default (package-private), accessible within the package
+
+    // Constructor
+    public Animal(String name, int age, String species, String habitat) {
+        this.name = name;
+        this.age = age;
+        this.species = species;
+        this.habitat = habitat;
+    }
+
+    // Methods
+    public void printDetails() {
+        System.out.println("Name: " + name + ", Age: " + age + ", Species: " + species + ", Habitat: " + habitat);
+    }
+}
+
+class Dog extends Animal {
+    public Dog(String name, int age, String species, String habitat) {
+        super(name, age, species, habitat);
+    }
+
+    public void display() {
+        // System.out.println(name); // Error: 'name' is private in Animal
+        System.out.println("Age: " + age);          // Accessible because 'age' is public
+        System.out.println("Species: " + species);  // Accessible because 'species' is protected
+        System.out.println("Habitat: " + habitat);  // Accessible because it's default (package-private)
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Animal("Lion", 10, "Panthera leo", "Savannah");
+        animal.printDetails();
+        
+        Dog dog = new Dog("Bulldog", 5, "Canis lupus familiaris", "Urban");
+        dog.display();
+    }
+}
+```
+
+### Key Points:
+- **Private** members cannot be accessed outside the class they are declared in.
+- **Public** members can be accessed from anywhere.
+- **Protected** members can be accessed within the same package or by subclasses, even if they are in different packages.
+- **Package-private** (default, with no modifier) members can be accessed only within the same package.
+
+This set of access levels helps control the visibility of your class components and ensures that you can protect and encapsulate data as needed in your Java programs.
