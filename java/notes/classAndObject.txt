@@ -1,6 +1,37 @@
-class-
+class- a class is a blueprint or template for creating objects. It defines the properties (fields or attributes) and behaviors (methods or functions) that the objects created from the class will have. In simpler terms, a class is like a mold, and an object is the actual product made from that mold.
+Key Components of a Class in Java:
+Fields (or Variables): These are the properties or data that describe the state of an object. They are declared inside the class but outside of any methods.
 
-object-
+Methods: These define the actions or behaviors that objects of the class can perform. Methods are functions that typically operate on the data (fields) of the class.
+
+Constructors: A special method used to initialize objects. When you create an object (instantiate a class), the constructor is called to set up the initial state of the object.
+
+Access Modifiers: These control the visibility and accessibility of the fields and methods of the class (e.g., private, public, protected, etc.).
+
+Other Members: A class may also contain inner classes, static members, etc.
+public class Car {....}
+
+object-  an object is an instance of a class. It is a real-world entity that is created from a class and represents a specific example of the template or blueprint defined by the class.
+
+Key Characteristics of Objects:
+State: The state of an object is defined by its attributes (fields or variables). These attributes hold the values that represent the object's current condition.
+
+Behavior: The behavior of an object is defined by the methods (functions) it can perform. Methods are the actions that an object can take or can be invoked to operate on its state.
+
+Identity: Every object has a unique identity that distinguishes it from other objects, even if their state is the same.
+
+Object Creation: Car myCar = new Car("Tesla Model S", 2021);
+Here, an object of type Car is created using the new keyword and initialized with the values "Tesla Model S" and 2021 through the constructor.
+Accessing Methods: myCar.drive();
+The drive() method is called on the myCar object, which performs the action of "driving."
+Accessing Fields: System.out.println("Car model: " + myCar.model);
+The model field of the myCar object is accessed to print the car's model.
+Key Points About Objects in Java:
+An object is an instance of a class: When you define a class, you create the blueprint, and when you create an object, you instantiate that class.
+Objects have fields (attributes): These store data specific to the object.
+Objects have methods (behaviors): These define the actions or operations that the object can perform.
+Each object is independent: Objects are independent of each other and can have different states (values of their fields).
+
 
 here calculator is a class and obj is a object of that class to acess any function or variable of that object we need to use 
 objectName.function/variable name.
