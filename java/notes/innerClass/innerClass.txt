@@ -48,7 +48,18 @@ public class Main {
         outer.createInnerInstance();  // Output: Outer class field: Outer field
     }
 }
-```
+
+so to create a object of inner class we need to write like 
+A obj=new A();
+A.B obj1=obj.new B();
+A.B- this means B is a class inside A And if we compile it will make another class file name A$B.class 
+obj.A - because to access any non static thing in a class we need to make object of that class
+
+note if we make our inner class static we can do like
+A.B obj1=new A.B();
+hence we can treat A.B as a class 
+
+note we can only make inner class ststic not the outter class
 
 ### Explanation:
 - The `InnerClass` is a **non-static inner class** that can access the `outerField` of `OuterClass`.
@@ -165,7 +176,7 @@ public class Main {
         greeting.greet();  // Output: Hello from Anonymous Inner Class!
     }
 }
-```
+this can be also used with abstract class
 
 ### Explanation:
 - We create an instance of the `Greeting` interface using an anonymous inner class, providing its implementation for the `greet()` method.
