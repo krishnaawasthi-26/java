@@ -1,0 +1,150 @@
+The **`abstract`** keyword in Java is used to declare abstract classes and methods. An abstract class cannot be instantiated directly, and an abstract method is a method without a body that must be implemented by subclasses.
+
+### 1. **Abstract Classes**:
+An **abstract class** is a class that cannot be instantiated on its own. It can contain abstract methods (methods without a body) as well as concrete methods (methods with a body). The purpose of an abstract class is to provide a common base for subclasses, which will implement the abstract methods.
+
+#### Key Points about Abstract Classes:
+- You cannot create an instance of an abstract class.
+- An abstract class can have both abstract methods (without implementation) and concrete methods (with implementation).
+- A subclass that extends an abstract class must provide implementations for all abstract methods unless the subclass is also abstract.
+  
+### Example of an Abstract Class:
+
+```java
+// Abstract class
+abstract class Animal {
+    // Abstract method (no body)
+    public abstract void makeSound();
+
+    // Regular method (concrete method)
+    public void eat() {
+        System.out.println("This animal is eating.");
+    }
+}
+
+// Subclass of Animal
+class Dog extends Animal {
+    // Provide implementation for the abstract method
+    public void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Cannot create an object of the abstract class Animal
+        // Animal myAnimal = new Animal();  // Error
+        
+        // Can create an object of the subclass Dog
+        Animal myDog = new Dog();
+        myDog.makeSound();  // Output: Dog barks
+        myDog.eat();        // Output: This animal is eating.
+    }
+}
+```
+
+### Explanation:
+- **`Animal`** is an abstract class because it contains the abstract method `makeSound()`, which doesn't have an implementation.
+- **`Dog`** is a subclass of **`Animal`** and provides an implementation for the `makeSound()` method.
+- The abstract class allows you to define some common functionality (like `eat()`) while leaving some behavior to be defined by subclasses (like `makeSound()`).
+
+### 2. **Abstract Methods**:
+An **abstract method** is a method that is declared without an implementation. Subclasses that extend the abstract class must provide an implementation for these methods.
+
+#### Key Points about Abstract Methods:
+- An abstract method has no body, and it ends with a semicolon.
+- An abstract method can only be declared inside an abstract class.
+- A subclass is required to implement all abstract methods from the parent class unless the subclass is also abstract.
+
+#### Example of Abstract Method:
+
+```java
+abstract class Shape {
+    // Abstract method (no body)
+    public abstract double area();
+}
+
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Provide implementation for the abstract method
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape myCircle = new Circle(5);
+        System.out.println("Area of circle: " + myCircle.area());  // Output: Area of circle: 78.53981633974483
+    }
+}
+```
+
+### Explanation:
+- **`Shape`** is an abstract class with an abstract method `area()`.
+- **`Circle`** provides an implementation for the `area()` method.
+
+### 3. **Abstract Class with Constructor**:
+An abstract class can have constructors. Even though you cannot instantiate an abstract class, its constructor can be called from the constructor of a subclass.
+
+#### Example of Abstract Class with Constructor:
+
+```java
+abstract class Animal {
+    String name;
+
+    // Constructor of the abstract class
+    Animal(String name) {
+        this.name = name;
+    }
+
+    // Abstract method
+    public abstract void sound();
+}
+
+class Dog extends Animal {
+    Dog(String name) {
+        super(name);  // Calling the constructor of Animal
+    }
+
+    // Implementing the abstract method
+    public void sound() {
+        System.out.println(name + " barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog("Buddy");
+        myDog.sound();  // Output: Buddy barks
+    }
+}
+```
+
+### 4. **Use Cases of Abstract Classes**:
+- **Template Method Pattern**: An abstract class can define a skeleton of an algorithm, leaving the actual implementation to be filled in by subclasses.
+- **Shared Behavior**: An abstract class allows you to define some common behavior for all subclasses while leaving certain behavior to be implemented by the subclasses.
+  
+### 5. **Abstract Class vs Interface**:
+- An **abstract class** can have both abstract and concrete methods, while an **interface** can only have abstract methods (until Java 8, when default methods were introduced).
+- A class can extend only **one abstract class** (due to single inheritance), but it can implement **multiple interfaces**.
+- Abstract classes are more suitable when you want to share code and also define an interface. Interfaces are typically used to represent a contract (set of methods that classes must implement) without sharing implementation.
+
+### Key Differences Between Abstract Class and Interface:
+| **Feature**              | **Abstract Class**                     | **Interface**                      |
+|--------------------------|----------------------------------------|------------------------------------|
+| **Methods**              | Can have both abstract and concrete methods | Can only have abstract methods (except default methods from Java 8) |
+| **Constructors**         | Can have constructors                  | Cannot have constructors          |
+| **Multiple Inheritance** | A class can extend only one abstract class | A class can implement multiple interfaces |
+| **Access Modifiers**     | Can have any access modifier (public, protected, private) | Methods are public by default    |
+| **Fields**               | Can have instance fields               | Can have only constants (public, static, final) |
+
+### Summary:
+- **Abstract Class**: Cannot be instantiated; can have abstract and concrete methods; used to define shared functionality.
+- **Abstract Method**: A method without a body in an abstract class; must be implemented by subclasses.
+- **Use Case**: Abstract classes are used when you want to provide a common base with some shared functionality but leave some details to be filled by subclasses.
