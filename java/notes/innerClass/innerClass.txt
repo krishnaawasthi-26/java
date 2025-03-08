@@ -1,0 +1,188 @@
+### Inner Classes in Java
+
+An **inner class** in Java is a class that is defined **within another class**. Inner classes are used to logically group classes that are only used in one place, which can make the code more readable and maintainable. They also have access to the members (fields and methods) of the outer class, including private ones.
+
+Java supports **four types of inner classes**:
+
+1. **Non-static inner class** (or **Member inner class**)
+2. **Static inner class** (or **Static nested class**)
+3. **Local inner class**
+4. **Anonymous inner class**
+
+Let’s go through each of them with examples.
+
+---
+
+### 1. **Non-static Inner Class (Member Inner Class)**
+
+A non-static inner class is a class defined inside another class without the `static` keyword. It can access both static and non-static members (fields and methods) of the outer class.
+
+#### Key Characteristics:
+- It is associated with an instance of the outer class.
+- It can access both static and non-static members of the outer class.
+- You need an instance of the outer class to create an instance of the inner class.
+
+#### Example of a Non-static Inner Class:
+
+```java
+class OuterClass {
+    private String outerField = "Outer field";
+    
+    // Inner class
+    class InnerClass {
+        void display() {
+            System.out.println("Outer class field: " + outerField);
+        }
+    }
+    
+    public void createInnerInstance() {
+        // Creating an instance of the inner class using outer class instance
+        InnerClass inner = new InnerClass();
+        inner.display();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        outer.createInnerInstance();  // Output: Outer class field: Outer field
+    }
+}
+```
+
+### Explanation:
+- The `InnerClass` is a **non-static inner class** that can access the `outerField` of `OuterClass`.
+- To create an instance of `InnerClass`, we need an instance of `OuterClass` first, and then we can create the inner class object.
+
+---
+
+### 2. **Static Inner Class (Static Nested Class)**
+
+A static inner class is defined with the `static` keyword. It is not associated with an instance of the outer class. It can only access the static members of the outer class.
+
+#### Key Characteristics:
+- It does not require an instance of the outer class to be created.
+- It can access only static members of the outer class.
+- It behaves like a regular static class.
+
+#### Example of a Static Inner Class:
+
+```java
+class OuterClass {
+    private static String staticOuterField = "Static outer field";
+    
+    // Static inner class
+    static class StaticInnerClass {
+        void display() {
+            System.out.println("Outer class static field: " + staticOuterField);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an instance of the static inner class
+        OuterClass.StaticInnerClass inner = new OuterClass.StaticInnerClass();
+        inner.display();  // Output: Outer class static field: Static outer field
+    }
+}
+```
+
+### Explanation:
+- The `StaticInnerClass` is a **static inner class**, so it can be instantiated directly using `OuterClass.StaticInnerClass`.
+- It can access only static members of `OuterClass`.
+
+---
+
+### 3. **Local Inner Class (Inner Class within a Method)**
+
+A local inner class is a class defined inside a method, constructor, or block. It can access local variables and parameters of the enclosing method (if those variables are **final** or **effectively final**).
+
+#### Key Characteristics:
+- Defined within a method or block.
+- Can access final or effectively final local variables of the enclosing method.
+- It is used for scenarios where a class is needed only within a specific method.
+
+#### Example of a Local Inner Class:
+
+```java
+class OuterClass {
+    void outerMethod() {
+        final String localVar = "Local variable in method";
+
+        // Local inner class
+        class LocalInnerClass {
+            void display() {
+                System.out.println("Local variable: " + localVar);
+            }
+        }
+        
+        // Create instance of local inner class and call its method
+        LocalInnerClass inner = new LocalInnerClass();
+        inner.display();  // Output: Local variable: Local variable in method
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        outer.outerMethod();
+    }
+}
+```
+
+### Explanation:
+- `LocalInnerClass` is a **local inner class** defined inside the `outerMethod` method.
+- It has access to the final local variable `localVar` inside `outerMethod`.
+
+---
+
+### 4. **Anonymous Inner Class**
+
+An anonymous inner class is a **class without a name**. It is used to instantiate an interface or a class with minimal implementation, typically in a single line. They are often used in event handling and passing behavior to methods.
+
+#### Key Characteristics:
+- Has no name.
+- It is defined and instantiated in a single statement.
+- Typically used for short-lived instances, like implementing an interface or extending a class for one-time use.
+
+#### Example of an Anonymous Inner Class:
+
+```java
+interface Greeting {
+    void greet();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Anonymous inner class implementing Greeting interface
+        Greeting greeting = new Greeting() {
+            public void greet() {
+                System.out.println("Hello from Anonymous Inner Class!");
+            }
+        };
+        
+        greeting.greet();  // Output: Hello from Anonymous Inner Class!
+    }
+}
+```
+
+### Explanation:
+- We create an instance of the `Greeting` interface using an anonymous inner class, providing its implementation for the `greet()` method.
+- This is often used when you need a quick implementation of an interface or abstract class, especially in event-driven programming or when working with callbacks.
+
+---
+
+### Summary of Inner Classes in Java:
+
+| **Type**               | **Description**                                                       | **Key Characteristics**                             |
+|------------------------|-----------------------------------------------------------------------|-----------------------------------------------------|
+| **Non-static inner class (Member inner class)** | Defined inside another class, associated with an instance of the outer class. | Can access both static and non-static members of outer class. |
+| **Static inner class (Static nested class)**    | Defined inside another class but with the `static` keyword.             | Can only access static members of the outer class. |
+| **Local inner class**  | Defined inside a method or constructor.                                | Can access final local variables and parameters of the enclosing method. |
+| **Anonymous inner class** | A nameless inner class, often used for quick implementations of interfaces or classes. | Defined and instantiated in one statement, typically used for short-term use. |
+
+### Benefits of Inner Classes:
+- **Encapsulation**: Inner classes allow you to logically group classes and keep them hidden from outside the outer class, improving encapsulation.
+- **Access**: Inner classes have access to the members of the outer class, including private members, which can be useful in certain scenarios.
+- **Code Organization**: Helps in organizing code and reduces clutter by keeping related classes together.
