@@ -196,6 +196,13 @@ class Dog extends Animal {
 ### **6. Conclusion**
 - **Interfaces** are best when you want to define a contract that can be implemented by any class, possibly from different class hierarchies. It’s also useful when you want to have multiple inheritance.
 - **Abstract classes** are best when you want to provide common behavior while leaving some implementation to be provided by subclasses, typically when working with closely related classes.
+we can directlly use the variable of a interface by making a refrence of it because the varicble will be of type public final static.
+a single class can implement multiple interfaces which was not the case with the abstract class 
+but note by making refrence of one interface type and insitilition it with object of the implemented class we can only access method defined in it and same with other interfaces. 
+but what will happen if both the interfaces have same function to implement (function name is same)
+
+
+if we want a interface to inherit the propety of another interface we can use extends.
 
 The choice between an interface and an abstract class depends on your design needs, such as whether you need shared functionality, or flexibility and decoupling between classes.
 
