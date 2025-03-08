@@ -1,0 +1,161 @@
+### Default Methods in Java
+
+A **default method** is a method in an **interface** that has a default implementation. Default methods were introduced in Java 8 to allow adding new methods to interfaces without breaking the existing implementations of those interfaces.
+
+Prior to Java 8, interfaces could only have **abstract methods** (methods without a body), and any class that implemented the interface was required to provide an implementation for those methods. However, with the introduction of default methods, interfaces can now provide a default implementation for methods.
+
+### Key Points about Default Methods:
+
+1. **Default Implementation**: A default method can have a method body, so it can provide a default implementation. This eliminates the need for all implementing classes to define the method themselves if they don’t need a custom behavior.
+   
+2. **Keyword**: The `default` keyword is used to define a default method in an interface.
+
+3. **Backward Compatibility**: Default methods were introduced mainly to ensure backward compatibility when adding new methods to existing interfaces. Without default methods, adding new methods to an interface would have broken all existing implementations of that interface.
+
+4. **Overriding**: A class implementing the interface can still **override** a default method if it needs to provide a custom implementation.
+
+5. **Can Have `static` and `default` Methods**: Java interfaces can have both `default` and `static` methods. While `default` methods provide instance-specific behavior, `static` methods are related to the interface itself and cannot be overridden by implementing classes.
+
+### Syntax of a Default Method:
+```java
+interface MyInterface {
+    // Default method with a body
+    default void defaultMethod() {
+        System.out.println("This is a default method in the interface.");
+    }
+
+    // Abstract method (no body)
+    void abstractMethod();
+}
+```
+
+### Example of Default Method:
+
+```java
+interface Animal {
+    // Default method
+    default void sleep() {
+        System.out.println("This animal is sleeping.");
+    }
+
+    // Abstract method
+    void sound();
+}
+
+class Dog implements Animal {
+    // Implementing the abstract method
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        myDog.sound();  // Output: Dog barks
+        myDog.sleep();  // Output: This animal is sleeping. (default method)
+    }
+}
+```
+
+### Explanation:
+- The interface `Animal` has a default method `sleep()`, which provides a default implementation.
+- The `Dog` class implements the `Animal` interface and provides its own implementation for the abstract method `sound()`.
+- The `Dog` object can call the default method `sleep()` without needing to provide an implementation.
+
+### Why Use Default Methods?
+1. **Backward Compatibility**: They allow you to add new functionality to an interface without breaking the existing classes that implement that interface. For example, if you have an interface with many implementations, you can add a default method to the interface, and all the existing implementations will continue to work without modification.
+
+2. **Reusability**: Default methods can be used to provide a common implementation in the interface, which can be reused by all implementing classes, reducing the need for duplication.
+
+3. **Multiple Inheritance**: Default methods allow an interface to have concrete behavior, which is useful in situations where you want to provide multiple inheritance of behavior, not just method signatures.
+
+### Example: Adding a Default Method to an Existing Interface:
+
+Imagine you have an interface `Vehicle` and a class `Car` implementing it. If you want to add a new method `fuelType()` to the interface without modifying the `Car` class directly, you can do this with a default method.
+
+```java
+interface Vehicle {
+    void start();
+
+    // Adding a default method without affecting existing implementations
+    default void fuelType() {
+        System.out.println("This vehicle uses gasoline.");
+    }
+}
+
+class Car implements Vehicle {
+    public void start() {
+        System.out.println("Car is starting.");
+    }
+}
+
+class ElectricCar implements Vehicle {
+    public void start() {
+        System.out.println("Electric car is starting.");
+    }
+
+    // Override the default method for ElectricCar
+    public void fuelType() {
+        System.out.println("This vehicle uses electricity.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        myCar.start();       // Output: Car is starting.
+        myCar.fuelType();    // Output: This vehicle uses gasoline.
+
+        Vehicle myElectricCar = new ElectricCar();
+        myElectricCar.start();       // Output: Electric car is starting.
+        myElectricCar.fuelType();    // Output: This vehicle uses electricity.
+    }
+}
+```
+
+### Explanation:
+- The `Vehicle` interface has a default method `fuelType()` that provides a default implementation.
+- The `Car` class doesn't need to implement `fuelType()` because it automatically inherits the default behavior.
+- The `ElectricCar` class overrides `fuelType()` to provide a more specific implementation for electric cars.
+
+### Important Notes:
+- **Interfaces can have multiple default methods**: You can define as many default methods as needed in an interface.
+- **Inheritance Conflict**: If a class implements multiple interfaces that have conflicting default methods (same method name but different implementations), the class must explicitly override the method to resolve the conflict.
+
+### Example of Conflict Between Multiple Default Methods:
+If two interfaces provide conflicting default methods, a class that implements both must override the method.
+
+```java
+interface InterfaceA {
+    default void show() {
+        System.out.println("Show from Interface A");
+    }
+}
+
+interface InterfaceB {
+    default void show() {
+        System.out.println("Show from Interface B");
+    }
+}
+
+class MyClass implements InterfaceA, InterfaceB {
+    // Resolving the conflict by overriding the show method
+    public void show() {
+        System.out.println("Show from MyClass");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.show();  // Output: Show from MyClass
+    }
+}
+```
+
+### Summary of Default Methods:
+- **Default methods** are used to provide method implementations directly in interfaces, allowing interfaces to have both abstract and concrete methods.
+- They allow you to add new methods to interfaces without breaking the existing code.
+- They help with **backward compatibility** and **reusability**.
+- They can be overridden by implementing classes if a different behavior is required.
