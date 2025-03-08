@@ -1,1 +1,56 @@
-@override above new function declearaion
+### Overriding in Object-Oriented Programming
+
+**Overriding** is a concept in object-oriented programming where a subclass (child class) provides a specific implementation of a method that is already defined in its superclass (parent class). The subclass's method "overrides" the method of the superclass.
+
+Overriding is typically used when the subclass wants to change or extend the behavior of a method inherited from the superclass. This allows the subclass to provide its own version of a method while still maintaining the same method signature (name, return type, and parameters).
+
+#### Key Points About Overriding:
+1. **Method Signature Must Be Identical**: The method in the subclass must have the same name, return type, and parameters as the method in the superclass.
+2. **Runtime Polymorphism**: Overriding is a way to achieve runtime polymorphism, where the method to be executed is determined at runtime based on the object's actual class type, not the reference type.
+3. **Access Modifiers**: The access level of the overriding method should be the same or more permissive than the overridden method. For example, if the superclass method is `public`, the overriding method in the subclass must also be `public` or have a less restrictive access level.
+4. **Use of `@Override` Annotation**: In Java, it's common practice to use the `@Override` annotation to make sure that you're properly overriding a method. It helps catch mistakes like mismatched method signatures.
+
+#### Example of Overriding in Java:
+
+```java
+// Superclass
+class Animal {
+    // Method in the superclass
+    public void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Subclass overriding the method
+class Dog extends Animal {
+    // Overriding the makeSound() method in Dog
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an Animal reference, but it points to a Dog object
+        Animal myDog = new Dog();
+        
+        // The overridden makeSound() method in Dog will be called
+        myDog.makeSound(); // Output: Dog barks
+    }
+}
+```
+
+#### In this example:
+- **Superclass (`Animal`)** has a method `makeSound()`.
+- **Subclass (`Dog`)** overrides the `makeSound()` method to provide its specific implementation.
+- Even though the reference type is `Animal`, the actual object is of type `Dog`. As a result, the `Dog`'s version of `makeSound()` is called, demonstrating **runtime polymorphism**.
+
+#### Benefits of Overriding:
+1. **Customization**: You can tailor the behavior of a method to suit the specific needs of a subclass.
+2. **Polymorphism**: Enables polymorphic behavior, allowing code to work with objects of different classes in a uniform way.
+3. **Code Reusability**: It allows you to reuse the method signature from the superclass while changing the actual behavior in the subclass.
+
+#### When Not to Use Overriding:
+- **If the method is not meant to be changed**: Some methods may be designed to provide consistent behavior across all subclasses. In such cases, overriding should be avoided.
+- **If the superclass method is final or static**: You cannot override a `final` method (because it is meant to remain unchanged) or a `static` method (since they are resolved at compile time, not runtime).
