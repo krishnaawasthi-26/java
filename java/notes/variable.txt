@@ -4,20 +4,28 @@ how to explicitely mention to make some variable like for float its f and their 
 data type is a type of stroage which can we use to store different type of data like name age etc
 
 Primitive Data Types - data type which are already already 
+data types can be of 2 type
+1 signed sata type -numeric data type- integer data type and floating point data type-value can be -ve and +ve
+2 unsigned data type - non numeric data type-character data type and boolean data type-value is always possitive
+
 byte
 Size: 1 byte
 Range: -128 to 127
 Example: byte a = 100;
+when to use see lecture 2 around 43 min durga sir
 
 short
 Size: 2 bytes
 Range: -32,768 to 32,767
 Example: short b = 32000'
+most rarely used data type
+it was mostly used when java recently camed out when there was 16 bit processor like 8086 etc but now these are outdated
 
 int
 Size: 4 bytes
 Range: -2^31 to 2^31-1
 Example: int c = 100000;
+most common data type 
 
 long
 Size: 8 bytes
@@ -90,7 +98,7 @@ For example: age, studentName, totalAmount are much more meaningful than just a,
 note in java we need to put value of a variable very carefully 
 like int a=10.5; will give error because its of different type int and double hence thtas why java is called strongly types language
 that means we need to specify the type of variable specifically
-
+if we try to store a value out of range it will give error or try to store different type if data like trying to put string to int etc
 
 Rule	                                     Description
 Start with a letter, _ or $	The first character must be a letter, _, or $.
