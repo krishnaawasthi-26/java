@@ -87,6 +87,9 @@ Variable names must be meaningful and descriptive:
 It's important to give your variables descriptive names so that anyone reading your code can understand its purpose.
 For example: age, studentName, totalAmount are much more meaningful than just a, b, c.
 
+note in java we need to put value of a variable very carefully 
+like int a=10.5; will give error because its of different type int and double hence thtas why java is called strongly types language
+that means we need to specify the type of variable specifically
 
 
 Rule	                                     Description
