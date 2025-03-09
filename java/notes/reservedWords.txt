@@ -1,0 +1,9 @@
+there is total 53 reserved words in java 
+out of 53 there is 
+1 keyword -50 - when the reserved word have some functionality
+2 reserved literal-3 - when the reserved word only have some value
+the 3 reserved literal are true false and null which are value and not have any functionality
+
+keyword can be divided into  types
+1- user keyword -48-
+2-unuser keyword-2- thses keyword cant be used by user which are goto and const 
