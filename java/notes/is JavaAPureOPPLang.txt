@@ -1,3 +1,4 @@
 there can be 2 answer 
 1 yes because it contin classes and it more object oriented than c and c++
 2 no because it doesnot contain fuunction overloading etc and also have primitive data types
+for more watch durga sir video 2 core
