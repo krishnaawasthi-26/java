@@ -1,0 +1,52 @@
+identifier is a thing which canbe used for identification purposes 
+like name -shiva ,nasir ,garvit and etc
+hence identifier is name can be variable name ,method name ,class name ,lebel name etc
+exammple- 
+class Main{
+  public static void main(String[] argv){
+  int a=10;
+  }
+}
+there is in total 5 identifier
+Main
+main
+String
+argv
+a
+
+
+rules to name a identifier
+Note dont get confused if you see variable at place of identifier same rules are for both
+1. Basic Rules for Naming identifier:
+Variable names must begin with a letter, underscore (_), or dollar sign ($):
+
+The first character cannot be a number.
+Example: myVariable, _myVariable, $myVariable are valid, but 1stVariable is invalid.
+Subsequent characters can be letters, digits, underscores, or dollar signs:
+
+After the first character, you can use digits (0-9), letters (a-z, A-Z), underscores (_), or dollar signs ($).
+Example: myVariable123, _variableName, $var are valid, but var@name is invalid.
+Variable names are case-sensitive:
+
+myVariable and myvariable are treated as different variables.
+Example: int count = 10; and int Count = 20; are valid but represent two different variables.
+Variable names cannot be Java reserved keywords:
+
+Keywords like int, class, public, if, else, try, etc., cannot be used as variable names.
+Example: int class = 10; is invalid because class is a reserved keyword in Java.
+Variable names must be meaningful and descriptive:
+
+It's important to give your variables descriptive names so that anyone reading your code can understand its purpose.
+For example: age, studentName, totalAmount are much more meaningful than just a, b, c.
+
+
+note there is no limit in length of a identifier we can't use reserved  words like if ,but we can use name as predefined classis like String
+etc
+
+Rule	                                     Description
+Start with a letter, _ or $	The first character must be a letter, _, or $.
+Subsequent characters	Can include letters, digits, _, or $.
+Case-sensitive	Java is case-sensitive. myVar and myvar are different.
+No reserved keywords	Can't use Java keywords (e.g., class, public).
+Meaningful names	Choose descriptive names like totalAmount or ageOfStudent.
+CamelCase	Follow camelCase convention for variable names.
