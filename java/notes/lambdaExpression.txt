@@ -1,0 +1,192 @@
+this is a type of expression which can be only achived when we are using the functional interface it is used to create a object 
+of functional interface by defining the working of the function 
+we can define the function in less line of code comparied to normal defination
+
+example the code is
+
+@functionalInterface 
+interface A{
+  void show();
+}
+
+public class Main{
+  public static void main(){
+    A obj=new A(){
+      public void show(){
+        System.out.println("showed");
+      }
+    };
+    obj.show();
+}
+}
+
+this is the normal way to make a functional interface object but the thing is we only have one function and the compile 
+know about the name return type and other thing then why we need to specify that in the code hence we can short the code like
+@functionalInterface 
+interface A{
+  void show();
+}
+
+public class Main{
+  public static void main(){
+    A obj=() ->{
+        System.out.println("showed");
+    };
+    obj.show();
+}
+}
+
+here we have removed the new interface name along with the function name and the return type because compiler know what it is
+we can further remove the {} because there is only one like of code like
+
+interface A{
+  void show();
+}
+
+public class Main{
+  public static void main(){
+    A obj=() -> System.out.println("showed");
+    obj.show();
+}
+}
+
+now that if we want 
+
+@functionalInterface 
+interface A{
+  void show(int i);
+}
+
+public class Main{
+  public static void main(){
+    A obj=new A(){
+      public void show(int i){
+        System.out.println("showed : "+i);
+      }
+    };
+
+    obj.show(2);
+}
+}
+
+using landa function we can make it 
+@functionalInterface 
+interface A{
+  void show();
+}
+
+public class Main{
+  public static void main(){
+    A obj= A(i) -> {
+        System.out.println("showed");
+    };
+    obj.show(2);
+}
+}
+
+note if we only have one parameter we can also remove the () for parameter like 
+@functionalInterface 
+interface A{
+  void show(int i);
+}
+
+public class Main{
+  public static void main(){
+    A obj=i -> {
+        System.out.println("showed");
+    };
+    obj.show(2);
+}
+}
+we dont need to specify the type of i because compiler know it
+and can also remove {} like
+@functionalInterface 
+interface A{
+  void show(int i);
+}
+
+public class Main{
+  public static void main(){
+    A obj=i -> System.out.println("showed");
+        obj.show(2);
+}
+}
+
+what if we create a function which return something lets take the exapmle of the a sum function
+
+@functionalInterface 
+interface A{
+  int sum(int a,int b);
+}
+
+public class Main{
+  public static void main(){
+    A obj=new A(){
+      public void sum(int a ,int b){
+        return a+b;
+      }
+    };
+    obj.show(2,3);
+}
+}
+
+then we can do like 
+
+@functionalInterface 
+interface A{
+  int sum(int a,int b);
+}
+
+public class Main{
+  public static void main(){
+    A obj=(int a ,int b)->{
+        return a+b;
+      }
+    };
+    obj.show(2,3);
+}
+}
+
+then 
+@functionalInterface 
+interface A{
+  int sum(int a,int b);
+}
+
+public class Main{
+  public static void main(){
+    A obj=(a,b)->{
+        return a+b;
+      }
+    };
+    obj.show(2,3);
+}
+}
+then 
+@functionalInterface 
+interface A{
+  int sum(int a,int b);
+}
+
+public class Main{
+  public static void main(){
+    A obj=(a ,b)->return a+b;
+    obj.show(2,3);
+}
+} 
+
+but if we are just returning the we dont even need to write the return statement hence it will become like
+
+@functionalInterface 
+interface A{
+  int sum(int a,int b);
+}
+
+public class Main{
+  public static void main(){
+    A obj=(a ,b)-> a+b;
+    obj.show(2,3);
+}
+} 
+
+we can also pass a lamda expression at place of passing a object 
