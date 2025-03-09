@@ -3,7 +3,21 @@ out of 53 there is
 1 keyword -50 - when the reserved word have some functionality
 2 reserved literal-3 - when the reserved word only have some value
 the 3 reserved literal are true false and null which are value and not have any functionality
+true false is values of a boolean variable and null is the default value of a obect reference
 
 keyword can be divided into  types
 1- user keyword -48-
-2-unuser keyword-2- thses keyword cant be used by user which are goto and const 
+2-unuser keyword-2- thses keyword cant be used by user which are goto and const -if tried to used we will get complile time error
+goto is not used beacuse it have created many problem in older languages
+const is not use beacuse we already have finally to make constant
+user keyword are 
+1 data type keyword-8-byte short int long float double boolean char
+2 flow control keyword-11-if else switch return continue break for while do case default
+3 modifier-11-public private protected static final abstract syncroser native striupt(came after 1.2v) volatile tranciant (when nothingits default hence now included)
+4 exception handllying-try catch throw finally throws assert(1.4v)
+5 class related- class interface extend implement package import
+6 object related - this new instantof super 
+7 return type - void(in java specifing the return type is mendotery but in c its not it will take it as int)
+8 enum(got in 1.5v) -
+
+note all the keywords in java only contain lowercase letters and no digit and no special character
