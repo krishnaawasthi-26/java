@@ -1,0 +1,687 @@
+Exception: In Java, an exception is an event that disrupts the normal flow of program execution. It is an object that describes an error or unexpected behavior that occurs during the execution of a program.
+
+Types of Exceptions in Java:
+Checked Exceptions (Compile-Time Exceptions):
+
+These exceptions are checked at compile time. The compiler ensures that the program handles these exceptions, either through a try-catch block or by declaring the exception with the throws keyword.
+Examples: IOException, SQLException, ClassNotFoundException.
+Unchecked Exceptions (Runtime Exceptions):
+
+These exceptions are not checked at compile time. They are typically due to programming errors and do not require explicit handling.
+Examples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException.
+Errors:
+
+These are not exceptions, but severe problems that are usually outside the control of the program. Errors typically cannot be handled.
+Examples: OutOfMemoryError, StackOverflowError.
+
+### Exception Handling in Java using `try-catch`
+
+In Java, exceptions are handled using the `try-catch` block. The `try` block contains the code that might throw an exception, and the `catch` block is used to handle that exception when it occurs.
+
+#### Syntax:
+
+```java
+try {
+    // Code that might throw an exception
+} catch (ExceptionType e) {
+    // Code to handle the exception
+}
+```
+
+- The `try` block contains code that could potentially throw an exception.
+- The `catch` block catches the exception and allows you to handle it gracefully (e.g., by displaying an error message or recovering from the error).
+
+### Example:
+
+Here's an example of exception handling using `try-catch` to handle a potential `ArithmeticException` (division by zero):
+
+```java
+public class TryCatchExample {
+    public static void main(String[] args) {
+        int numerator = 10;
+        int denominator = 0;
+
+        try {
+            // Code that may throw an exception
+            int result = numerator / denominator;  // This will throw ArithmeticException
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            // Handle the exception
+            System.out.println("Error: Cannot divide by zero.");
+        }
+
+        System.out.println("Program continues after exception handling.");
+    }
+}
+```
+
+### Output:
+
+```
+Error: Cannot divide by zero.
+Program continues after exception handling.
+```
+
+### Key Points:
+1. **`try` block**: Contains code that might throw an exception.
+2. **`catch` block**: Catches and handles the exception of a specific type (in this case, `ArithmeticException`).
+3. The program continues executing after the exception is caught.
+
+### Multiple `catch` Blocks:
+
+You can also use multiple `catch` blocks to handle different types of exceptions:
+
+```java
+public class MultipleCatchExample {
+    public static void main(String[] args) {
+        try {
+            String str = null;
+            // Code that may throw multiple exceptions
+            System.out.println(str.length());  // This will throw NullPointerException
+            int result = 10 / 0;  // This will throw ArithmeticException
+        } catch (NullPointerException e) {
+            System.out.println("Error: Null pointer exception.");
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Arithmetic exception.");
+        } catch (Exception e) {
+            System.out.println("General error: " + e.getMessage());
+        }
+
+        System.out.println("Program continues after exception handling.");
+    }
+}
+
+
+Output:
+
+Error: Null pointer exception.
+Program continues after exception handling.
+
+
+### `finally` Block:
+
+The `finally` block is used to execute code that should run regardless of whether an exception was thrown or not. It is typically used for cleanup code (e.g., closing files, releasing resources).
+
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 2;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Cannot divide by zero.");
+        } finally {
+            System.out.println("This will always be executed, whether an exception occurred or not.");
+        }
+    }
+}
+
+### Output:
+
+Result: 5
+This will always be executed, whether an exception occurred or not.
+
+
+- **`try` block**: Contains the code that may throw an exception.
+- **`catch` block**: Catches and handles the exception.
+- **`finally` block**: Executes code that should always run, regardless of whether an exception was thrown or not.
+
+### Exception Hierarchy in Java
+
+In Java, exceptions are objects that are part of a **class hierarchy**. The exception hierarchy is rooted at the `Throwable` class. Here's a breakdown of the **exception hierarchy** and its key classes:
+
+#### 1. **Throwable** (Root class)
+   - **Throwable** is the root class of the exception hierarchy. It is the superclass of all errors and exceptions in Java. The `Throwable` class has two main subclasses: `Exception` and `Error`.
+   - `Throwable` is the parent class for both **exceptions** and **errors**, which means it can represent both conditions that can be caught and handled (exceptions) and those that typically cannot (errors).
+
+```java
+Throwable
+   ├── Exception
+   │     ├── IOException
+   │     ├── SQLException
+   │     ├── ClassNotFoundException
+   │     └── RuntimeException
+   │            ├── ArithmeticException
+   │            ├── NullPointerException
+   │            ├── ArrayIndexOutOfBoundsException
+   │            └── etc.
+   └── Error
+         ├── OutOfMemoryError
+         └── StackOverflowError
+```
+
+---
+
+### 2. **Exception**
+   - **Exception** is a subclass of `Throwable` and represents conditions that a program should catch and handle. There are two main types of exceptions:
+     - **Checked Exceptions**: These must be either caught or declared in the method signature.
+     - **Unchecked Exceptions**: These are also called **RuntimeExceptions** and are not required to be caught or declared.
+
+---
+
+#### 2.1 **Checked Exceptions**
+   - These exceptions are checked by the compiler. If a method is capable of throwing a checked exception, it must either handle it with a `try-catch` block or declare it using the `throws` keyword in the method signature.
+   - **Examples of Checked Exceptions**:
+     - `IOException`
+     - `SQLException`
+     - `ClassNotFoundException`
+
+```java
+try {
+    // Code that may throw a checked exception
+    FileReader file = new FileReader("file.txt");
+} catch (IOException e) {
+    // Handle exception
+}
+```
+
+---
+
+#### 2.2 **Unchecked Exceptions** (RuntimeException)
+   - These exceptions are subclasses of **`RuntimeException`** and are typically caused by programming bugs, such as incorrect logic or invalid input. The compiler does not force you to handle these exceptions.
+   - **Examples of Unchecked Exceptions**:
+     - `ArithmeticException`
+     - `NullPointerException`
+     - `ArrayIndexOutOfBoundsException`
+     - `IllegalArgumentException`
+
+```java
+try {
+    // Code that may throw an unchecked exception
+    int result = 10 / 0;  // ArithmeticException
+} catch (ArithmeticException e) {
+    // Handle exception
+}
+```
+
+---
+
+### 3. **Error**
+   - **Error** is another subclass of `Throwable`, but it represents more serious problems that a program typically cannot recover from. **Errors** are usually related to the Java Virtual Machine (JVM) or system-level issues.
+   - **Examples of Errors**:
+     - `OutOfMemoryError`: Raised when the JVM runs out of memory.
+     - `StackOverflowError`: Raised when the JVM stack is exhausted, often due to excessive recursion.
+
+Errors are not meant to be caught or handled because they usually indicate a problem that the program cannot recover from.
+
+```java
+try {
+    // Code that may throw an error (this is an example, it will not throw an error)
+    String[] arr = new String[Integer.MAX_VALUE];  // Might throw OutOfMemoryError
+} catch (OutOfMemoryError e) {
+    // Handle error (though it is rare to handle errors)
+    System.out.println("Out of memory!");
+}
+```
+
+---
+
+### Summary of the Exception Hierarchy:
+
+- **Throwable**: The root class.
+  - **Exception**: Represents conditions that can be handled (program logic issues).
+    - **Checked Exceptions**: Must be caught or declared (e.g., `IOException`, `SQLException`).
+    - **RuntimeException**: Unchecked exceptions (e.g., `ArithmeticException`, `NullPointerException`).
+  - **Error**: Represents severe conditions that typically can't be handled (e.g., `OutOfMemoryError`, `StackOverflowError`).
+
+---
+
+### Key Takeaways:
+
+- **Throwable** is the base class for both exceptions and errors.
+- **Exceptions** are conditions that programs can catch and handle. They include **checked exceptions** (must be caught or declared) and **unchecked exceptions** (not required to be caught).
+- **Errors** typically represent problems that the program cannot recover from.
+
+Certainly! Here's an example that covers the entire exception hierarchy and demonstrates how **checked exceptions**, **unchecked exceptions**, and **errors** can be handled effectively in Java. This example shows how different types of exceptions and errors can occur, and how they can be caught and handled using `try-catch` blocks.
+
+### Complete Example of Exception Handling in Java:
+
+```java
+import java.io.*;
+
+public class ExceptionHierarchyExample {
+    public static void main(String[] args) {
+        // Unchecked Exception Example (RuntimeException)
+        try {
+            System.out.println("Unchecked Exception Example:");
+            int result = divide(10, 0);  // This will throw ArithmeticException
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Cannot divide by zero (Unchecked Exception)");
+        }
+
+        // Checked Exception Example (IOException)
+        try {
+            System.out.println("\nChecked Exception Example:");
+            readFile("nonexistentfile.txt");  // This will throw FileNotFoundException
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File not found (Checked Exception)");
+        } catch (IOException e) {
+            System.out.println("Error: IO Exception occurred");
+        }
+
+        // Error Example (OutOfMemoryError)
+        try {
+            System.out.println("\nError Example:");
+            simulateOutOfMemory();  // This will throw OutOfMemoryError
+        } catch (OutOfMemoryError e) {
+            System.out.println("Error: Out of memory (Error)");
+        }
+
+        System.out.println("\nProgram continues after exception handling.");
+    }
+
+    // Unchecked exception: Division by zero
+    public static int divide(int numerator, int denominator) {
+        return numerator / denominator;  // Throws ArithmeticException if denominator is zero
+    }
+
+    // Checked exception: File handling (IOException)
+    public static void readFile(String fileName) throws IOException {
+        FileReader file = new FileReader(fileName);  // Throws FileNotFoundException if file doesn't exist
+        BufferedReader reader = new BufferedReader(file);
+        reader.readLine();
+        reader.close();
+    }
+
+    // Error: Simulate an OutOfMemoryError (highly unlikely in normal circumstances)
+    public static void simulateOutOfMemory() {
+        long[] largeArray = new long[Integer.MAX_VALUE];  // Try to allocate an array too large
+    }
+}
+```
+
+### Explanation:
+
+1. **Unchecked Exception (RuntimeException)**:
+   - In the first `try-catch` block, the `divide()` method attempts to divide by zero, which causes an `ArithmeticException` (a runtime exception). This is caught in the `catch` block and a relevant message is printed.
+
+2. **Checked Exception (IOException)**:
+   - In the second `try-catch` block, the `readFile()` method tries to read from a non-existent file. Since `FileReader` may throw a `FileNotFoundException` (which is a checked exception), this must be handled. The `catch` block catches the exception and prints an error message.
+
+3. **Error (OutOfMemoryError)**:
+   - In the final `try-catch` block, the `simulateOutOfMemory()` method attempts to create an array that is too large, which throws an `OutOfMemoryError`. This is a serious system-level issue and is caught in the `catch` block to demonstrate error handling. However, errors like this usually cannot be recovered from, so the program will terminate if this occurs.
+
+### Output:
+
+```
+Unchecked Exception Example:
+Error: Cannot divide by zero (Unchecked Exception)
+
+Checked Exception Example:
+Error: File not found (Checked Exception)
+
+Error Example:
+Error: Out of memory (Error)
+
+Program continues after exception handling.
+```
+
+### Key Points:
+- **Unchecked Exceptions** (like `ArithmeticException`) are typically caused by programming errors and are handled during runtime.
+- **Checked Exceptions** (like `IOException`) require explicit handling, either by catching or declaring the exception.
+- **Errors** (like `OutOfMemoryError`) typically represent severe system-level issues and are usually not recoverable.
+
+---
+
+This example demonstrates how you can handle different types of exceptions and errors in Java effectively using the `try-catch` mechanism.
+
+### `throw` Keyword in Java
+
+The `throw` keyword in Java is used to **explicitly throw an exception**. It allows you to manually throw an exception (either a checked or unchecked exception) during the execution of your program when some condition arises.
+
+#### Syntax:
+```java
+throw new ExceptionType("Error message");
+```
+
+Where:
+- `ExceptionType` is the type of the exception you want to throw (e.g., `ArithmeticException`, `IOException`).
+- `"Error message"` is a message that provides details about the exception.
+
+### Key Points about `throw`:
+- You can use the `throw` keyword to throw **both checked and unchecked exceptions**.
+- The `throw` keyword is followed by the **creation** of an exception object (e.g., `new NullPointerException("Null value encountered")`).
+- Once an exception is thrown, the normal flow of the program is interrupted, and the exception is passed up the call stack until it is caught or it reaches the `main` method.
+
+### Example of Using `throw` to Throw an Exception:
+
+#### 1. Throwing an Unchecked Exception:
+```java
+public class ThrowExample {
+    public static void main(String[] args) {
+        try {
+            // Throwing an unchecked exception (RuntimeException)
+            checkAge(15);  // Age is less than 18, so an exception is thrown
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Method that throws an unchecked exception if age is less than 18
+    public static void checkAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("Age must be 18 or older");
+        } else {
+            System.out.println("You are allowed.");
+        }
+    }
+}
+```
+
+### Output:
+```
+Age must be 18 or older
+```
+
+#### 2. Throwing a Checked Exception:
+```java
+import java.io.*;
+
+public class ThrowCheckedExample {
+    public static void main(String[] args) {
+        try {
+            // Throwing a checked exception (IOException)
+            readFile("nonexistentfile.txt");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Method that throws a checked exception
+    public static void readFile(String fileName) throws IOException {
+        if (fileName.equals("nonexistentfile.txt")) {
+            throw new IOException("File not found");
+        } else {
+            System.out.println("Reading file...");
+        }
+    }
+}
+```
+
+### Output:
+```
+File not found
+```
+
+### Explanation:
+1. **Unchecked Exception (`IllegalArgumentException`)**:
+   - The `checkAge()` method checks if the age is less than 18, and if so, it **throws an `IllegalArgumentException`**.
+   - This is an **unchecked exception**, meaning it is not required to be declared or caught explicitly by the caller.
+
+2. **Checked Exception (`IOException`)**:
+   - The `readFile()` method checks if the file exists. If it doesn't, it **throws an `IOException`**, which is a **checked exception**.
+   - Because it is a checked exception, it must either be caught using `try-catch` or declared in the method signature with `throws`.
+
+### `throw` vs `throws`:
+
+- **`throw`** is used to **explicitly throw** an exception in your code.
+- **`throws`** is used in the method declaration to **declare** that a method can throw an exception.
+
+For example:
+```java
+public void myMethod() throws IOException {
+    // Code that might throw an IOException
+}
+```
+
+### Summary of `throw`:
+- The `throw` keyword allows you to **throw an exception** explicitly.
+- It is typically used when you want to signal an error or special condition.
+- You can throw both **checked** and **unchecked exceptions**.
+
+### Custom Exception in Java
+
+In Java, you can create your own exceptions by defining a **custom exception**. Custom exceptions allow you to throw and catch specific exceptions tailored to your application's needs, making your error-handling more meaningful and context-specific.
+
+To create a custom exception, you generally follow these steps:
+
+1. **Extend the `Exception` class** (for checked exceptions) or the `RuntimeException` class (for unchecked exceptions).
+2. Optionally, you can provide constructors that allow you to pass error messages or other data.
+
+### Steps to Create a Custom Exception:
+
+#### 1. **Create a Custom Checked Exception** (extending `Exception`):
+   - A custom checked exception is one that must be caught or declared in the method signature using the `throws` keyword.
+
+```java
+// Define a custom checked exception by extending the Exception class
+class InvalidAgeException extends Exception {
+    // Constructor to pass a custom error message
+    public InvalidAgeException(String message) {
+        super(message);  // Pass the message to the superclass constructor
+    }
+}
+
+public class CustomCheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            checkAge(15);  // This will throw InvalidAgeException
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Method that throws the custom checked exception if age is less than 18
+    public static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or older!");
+        } else {
+            System.out.println("Age is valid.");
+        }
+    }
+}
+```
+
+### Output:
+```
+Age must be 18 or older!
+```
+
+#### 2. **Create a Custom Unchecked Exception** (extending `RuntimeException`):
+   - A custom unchecked exception is one that is not required to be caught or declared. It extends `RuntimeException` and is typically used for programming errors or logical issues.
+
+```java
+// Define a custom unchecked exception by extending the RuntimeException class
+class InvalidNumberFormatException extends RuntimeException {
+    // Constructor to pass a custom error message
+    public InvalidNumberFormatException(String message) {
+        super(message);  // Pass the message to the superclass constructor
+    }
+}
+
+public class CustomUncheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            validateNumber(-5);  // This will throw InvalidNumberFormatException
+        } catch (InvalidNumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Method that throws the custom unchecked exception if number is negative
+    public static void validateNumber(int number) {
+        if (number < 0) {
+            throw new InvalidNumberFormatException("Number cannot be negative!");
+        } else {
+            System.out.println("Number is valid.");
+        }
+    }
+}
+```
+
+### Output:
+```
+Number cannot be negative!
+```
+
+### Explanation:
+1. **Custom Checked Exception**:
+   - The `InvalidAgeException` class extends `Exception`, making it a checked exception.
+   - The `checkAge()` method throws an instance of `InvalidAgeException` if the age is less than 18.
+   - Since it's a checked exception, it must be either caught in a `try-catch` block or declared in the method signature using `throws`.
+
+2. **Custom Unchecked Exception**:
+   - The `InvalidNumberFormatException` class extends `RuntimeException`, making it an unchecked exception.
+   - The `validateNumber()` method throws an instance of `InvalidNumberFormatException` if the number is negative.
+   - Since it's an unchecked exception, the compiler does not require you to catch or declare it.
+
+### Custom Exception with Additional Methods
+
+You can also add extra fields and methods to your custom exception class to provide more context or data.
+
+```java
+// Define a custom exception with additional fields
+class InsufficientBalanceException extends Exception {
+    private double deficitAmount;  // Additional field to hold the deficit amount
+
+    public InsufficientBalanceException(String message, double deficitAmount) {
+        super(message);
+        this.deficitAmount = deficitAmount;
+    }
+
+    // Getter for the deficit amount
+    public double getDeficitAmount() {
+        return deficitAmount;
+    }
+}
+
+public class CustomExceptionWithAdditionalData {
+    public static void main(String[] args) {
+        try {
+            withdraw(1000, 1200);  // This will throw InsufficientBalanceException
+        } catch (InsufficientBalanceException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Deficit amount: " + e.getDeficitAmount());
+        }
+    }
+
+    // Method to simulate a bank withdrawal
+    public static void withdraw(double balance, double withdrawAmount) throws InsufficientBalanceException {
+        if (withdrawAmount > balance) {
+            double deficit = withdrawAmount - balance;
+            throw new InsufficientBalanceException("Insufficient balance for withdrawal!", deficit);
+        } else {
+            System.out.println("Withdrawal successful.");
+        }
+    }
+}
+```
+
+### Output:
+```
+Insufficient balance for withdrawal!
+Deficit amount: 200.0
+```
+
+### Explanation:
+- The `InsufficientBalanceException` class has an additional field `deficitAmount`, which stores the difference between the withdrawal amount and the available balance.
+- The `withdraw()` method checks if the withdrawal amount exceeds the balance and throws the `InsufficientBalanceException` with the deficit amount.
+
+### Key Points:
+- **Custom Checked Exception**: Extends `Exception` and must be handled by the caller (using `try-catch` or `throws`).
+- **Custom Unchecked Exception**: Extends `RuntimeException` and is not required to be handled or declared.
+- **Adding Extra Fields**: You can add additional fields and methods to provide more information or context with the exception.
+
+### Summary:
+- **Custom exceptions** help create specific exceptions that represent real-world problems or conditions unique to your application.
+- By creating custom exceptions, you improve the maintainability and readability of your code, making error handling more meaningful and context-driven.
+
+It seems like you're referring to **"ducking exceptions"** using `throws` in Java, but the term **"ducking exception"** isn't a standard term in Java programming. However, I believe you're asking about the concept of **"exception propagation"** or **"exception delegation"** using the `throws` keyword, which essentially means allowing a method to **delegate** the responsibility of handling an exception to the calling method rather than handling it inside the method.
+
+Let me explain the concept based on that assumption:
+
+### **Exception Propagation (or Ducking) using `throws`**
+
+When you use the `throws` keyword in a method signature, you're essentially saying, **"I don't want to handle this exception in this method, so I will pass it on to the calling method"**. This is also known as **exception propagation**. By using `throws`, the method that might throw an exception **doesn't handle** the exception itself but rather **delegates** the responsibility to the caller, which then has to handle it.
+
+While "ducking" isn't a formal term in Java, it might be used informally to refer to **avoiding or passing on** the handling of the exception (like a ducking action) to another method or layer in the code.
+
+### How Does Exception Propagation Work with `throws`?
+
+When you declare a method using the `throws` keyword, you're **ducking** the responsibility of catching the exception, and the caller of the method must either **catch** the exception or propagate it further using `throws`.
+
+#### Example: Exception Propagation (or Ducking) using `throws`
+
+```java
+import java.io.*;
+
+public class DuckingExample {
+    public static void main(String[] args) {
+        try {
+            // Calling a method that throws an exception
+            readFile("nonexistentfile.txt");
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    // Method that declares an exception using throws (ducking exception handling)
+    public static void readFile(String fileName) throws IOException {
+        FileReader file = new FileReader(fileName);  // Might throw IOException
+        BufferedReader reader = new BufferedReader(file);
+        String line = reader.readLine();
+        System.out.println(line);
+        reader.close();
+    }
+}
+```
+
+### Explanation of the Code:
+1. **Exception Propagation:**
+   - The method `readFile()` declares that it **throws an `IOException`** using the `throws` keyword.
+   - This means the `readFile()` method **does not handle the exception**; it simply propagates it to the caller (which is the `main()` method).
+   
+2. **Responsibility of the Calling Method:**
+   - The `main()` method is responsible for handling the exception.
+   - If the exception is thrown, the `main()` method catches the exception in the `try-catch` block and prints the error message.
+
+### Why Use Exception Propagation (`throws`)?
+
+Here are some reasons why **exception propagation** (or "ducking") using `throws` is helpful:
+
+1. **Separation of Concerns:**
+   - A method that might throw an exception might not always have enough context or logic to handle it. By propagating it using `throws`, you allow the calling method to handle the exception based on the context.
+
+2. **Cleaner Code:**
+   - Sometimes, the code in a method might not need to worry about how to handle specific exceptions, and it can focus on its primary responsibility. The caller is more suited to handle the exception.
+
+3. **Flexibility:**
+   - By propagating exceptions with `throws`, you give the caller the flexibility to decide how to handle the exception (whether by retrying, logging, or handling it differently).
+
+### Example of Propagating Multiple Exceptions
+
+```java
+public class MultipleExceptionPropagation {
+    public static void main(String[] args) {
+        try {
+            // Calling the method that throws multiple exceptions
+            processData(0);  // This will cause ArithmeticException
+            processData(-10);  // This will cause IllegalArgumentException
+        } catch (ArithmeticException | IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    // Method that throws multiple exceptions using throws (propagating exceptions)
+    public static void processData(int number) throws ArithmeticException, IllegalArgumentException {
+        if (number == 0) {
+            throw new ArithmeticException("Cannot divide by zero");
+        } else if (number < 0) {
+            throw new IllegalArgumentException("Number cannot be negative");
+        } else {
+            System.out.println("Processing number: " + number);
+        }
+    }
+}
+```
+
+### Explanation:
+1. The method `processData(int number)` throws two possible exceptions: `ArithmeticException` and `IllegalArgumentException`. It declares these exceptions in the `throws` clause.
+2. The method `main()` calls `processData()` and handles the exceptions, ensuring that the application doesn't crash.
+
+### Summary:
+- **Exception Propagation (or Ducking)** refers to the practice of using the `throws` keyword to **pass on** the responsibility of handling an exception to the caller.
+- This allows a method to delegate the exception handling, so the caller can decide how to manage the exception.
+- Using `throws` ensures that methods don't become overly complex by forcing them to handle exceptions that might not be relevant to them.
+
+Let me know if this clears up the concept for you!
