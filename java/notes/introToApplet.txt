@@ -1,1 +1,115 @@
+### **Java Applet: What It Was Used For**  
+Java Applets were small programs that ran in web browsers and were mainly used for:  
+
+1. **Interactive Web Applications** – Games, animations, simulations.  
+2. **Data Visualization** – Graphs, charts, and interactive dashboards.  
+3. **Online Tools** – Calculators, text editors, and drawing tools.  
+4. **Network-Based Applications** – Chat applications, stock tickers, and live data streaming.  
+5. **Educational Simulations** – Physics experiments, circuit simulators, etc.  
+
+### **Why Java Applets Became Obsolete**  
+- Security vulnerabilities  
+- Modern browsers removed Java plugin support  
+- HTML5, JavaScript, and WebAssembly provide better alternatives  
+
+If you're looking to build interactive web applications, you'd be better off using **JavaScript, WebAssembly, or frameworks like React and Angular**. If you need Java, consider **Spring Boot for backend development**.  
+
+the code in the java file will be 
+import java.applet.Applet;
+import java.awt.Graphics;
+public class firstApllet extends Applet{
+    public void paint(Graphics g) {
+        g.drawString("krishna jhangid",150,150);
+    }
+}
+then complie it and then make a html file woth connent
+<html>
+<body>
+   <applet code="firstApllet.class" width="300" height="300"></applet>
+</body>
+</html>
+
+and then just open the html file but note 
+If someone still wants to use Java Applets, they would need to use **JDK 8 or lower** and rely on tools like **AppletViewer** for running the applet locally, since modern browsers no longer support applets. However, it's not recommended for production due to security and compatibility concerns.
+
+Java Applets are deprecated because modern browsers no longer support Java plugins due to security vulnerabilities and performance issues. Java is moving toward alternatives like JavaFX and web technologies such as JavaScript for better security and compatibility.
+
+the  basic structure of a applet is like
+
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class MyApplet extends Applet {
+    
+    // Method to initialize the applet
+    public void init() {
+        // Initialization code (optional)
+    }
+    public void start() {
+        // Start a new thread (for example, to animate something)
+    }
+    // Method to paint the applet's content
+    public void paint(Graphics g) {
+        // Drawing code (for example, drawing text)
+        g.drawString("Hello, Applet!", 50, 50);
+    }
+
+    // Method to stop the applet
+    public void stop() {
+        // Cleanup code (optional)
+    }
+
+    // Method to destroy the applet
+    public void destroy() {
+        // Final cleanup (optional)
+    }
+}
+
+init(): Called once when the applet is loaded. Used for initialization tasks (like setting up variables or resources).
+
+start(): Called when the applet is first displayed or resumed. It’s often used to start tasks like animations or background processes.
+
+paint(Graphics g): Called when the applet needs to redraw. The Graphics object is used to draw on the applet's window (e.g., drawing text, shapes, etc.).
+
+stop(): Called when the applet is stopped (e.g., when the user navigates away from the page containing the applet). It can be used for cleanup operations.
+
+destroy(): Called when the applet is destroyed (e.g., the browser or viewer is closed). It is used for releasing resources.
+
+this program to take input 
+
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class RectangleTest extends Applet {
+    int x, y, width, height;
+
+    // Initialize the applet
+    public void init() {
+        // Parse parameters from the HTML tag
+        x = Integer.parseInt(getParameter("x"));
+        y = Integer.parseInt(getParameter("y"));
+        width = Integer.parseInt(getParameter("width"));
+        height = Integer.parseInt(getParameter("height"));
+    }
+
+    // Paint method to draw the rectangle
+    public void paint(Graphics g) {
+        // Draw the rectangle using the parsed parameters
+        g.drawRect(x, y, width, height);
+    }
+}
+
+html file content 
+<html>
+<body>
+   <applet code="RectangleTest.class" width="300" height="300">
+      <param name="x" value="50">
+      <param name="y" value="50">
+      <param name="width" value="150">
+      <param name="height" value="100">
+   </applet>
+</body>
+</html>
+
+
 
