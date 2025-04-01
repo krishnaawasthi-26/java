@@ -12,3 +12,12 @@ to compiler a java file we need to write javac fileName.java this will create a 
 
 to run file we first need to compile using above step and the java classFileName to run and output will be on the screen(terminal)
 
+
+javac the Java Compiler 
+java- the Java Interpreter 
+javadoc-generates documentation in HTML 
+appletviewer the Java Interpreter to execute Java applets 
+jdb-the Java Debugger to find and fix bugs in Java programs 
+javap-the Java Disassembler to displays the accessible functionality 
+in a compiled class; it also displays the meaning of byte code 
+javah - to create interface between Java and C routines 
