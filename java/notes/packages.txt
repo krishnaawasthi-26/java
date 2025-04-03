@@ -89,6 +89,12 @@ In Java, access modifiers control the visibility of classes and class members.
 ### Summary of Java Packages:
 - **Packages** help organize classes and interfaces into namespaces.
 - **Built-in packages** provide a rich set of libraries for utility, I/O, networking, etc.
+
+------------------------------------------------------------------------
+if we want to create a single or couple of object from a package we can also do like
+java.util.Scanner=new java.util.Scanner();
+but not recommended for multiple use
+
 - **User-defined packages** allow you to create a structured organization for your own classes and interfaces.
 - **Package access control** ensures that classes and members are only accessible to appropriate parts of the program.
 - **`import` statement** allows you to use classes from other packages without needing to reference their full names.
