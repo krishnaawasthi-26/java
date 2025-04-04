@@ -206,3 +206,11 @@ if we want a interface to inherit the propety of another interface we can use ex
 
 The choice between an interface and an abstract class depends on your design needs, such as whether you need shared functionality, or flexibility and decoupling between classes.
 
+lern about reset() 
+note a class can inplement and extend at the same time
+
+some interfaced used are
+cloneable 
+iterator
+serializable
+comparable
